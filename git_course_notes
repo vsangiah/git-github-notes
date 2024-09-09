@@ -72,3 +72,29 @@ git log
 
 # Documentation at https://git-scm.com
 
+
+# Some Sensible Stuff: SSS
+# 1) Atomic Commit - single feature or change or fix - so that it is easier to rollback
+# 2) Use a Present-tense imperative stype of message for each commit: 
+# 	message shall be like giving orders to git or the computer
+# 3) If message is multiline detailed explanation: inline -m "message" is not feasible
+# 	so just give git commit and it will open the default editor, in my case it is nano
+# 4) To change the default editor
+git config --global core.editor "vim"
+git config --global core.editor "code --wait"
+git config --global core.editor "pluma"
+# 5) If we give along multi-line message, git log will give a long message as well.
+
+# How to ammend a commit:
+git commit -m "sample msg"
+git add forgotten_file.extn
+git commit --amend
+
+# How to ignore insignificant/secret files that is usually tracked by default:
+# Eg. Secret files, API keys, credentials, OS system files, insignificant log files, dependencies and packages that get built like slprj
+# 1) create a REPO_ROOT/.gitignore file and add the files and folders you want to ignore
+#	you can use wildcard
+touch .gitingnore
+# edit this file and add line by line names and folders you would like to ignore
+# Refer https://gitgnore.io  to know what all you would be needing to ignore and 
+#	just copy paste and save your time
