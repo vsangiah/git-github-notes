@@ -1,0 +1,74 @@
+Important stuff in this course: 
+Core git, Next level, Collaborating, Advanced - maybe Unnecessary
+
+Start:
+GIT - version control system, does everything like perforce
+
+How to Visualise this:
+1) add checkpoints for any set of files (repos)
+2) go back in time to that checkpoint
+3) fork and have a different time line and thay could meet with the first timeline
+
+Scientists use git + Github for code and theses
+
+git - offline, local to the machine vs Github - web service for hosts repos
+
+Configuring Git:
+git config user.name
+git config user.email
+git config --global user.name "Venkatesh"
+git config --global user.email venkat2797@gmail.com
+
+GIT REPO: workspace with files and folders and history
+Have a master folder - cd into the folder and init git there - now this is a repo
+# to get history of the repo 
+git log
+
+
+# get status of a git repo
+git status
+
+# navigate to the folder and initialise a repo
+git init
+# creates a .git dir in that folder and it has all the details of various versions
+# delete this .git dir, then all version data will be lost
+# make sure you are not intiializing a git repo inside a subfolder of an existing repo
+# so always get the status first before issuing the git init cmd 
+
+# its good to set a default branch name - this is what the repo starts off
+git config --global init.defaultBranch "main"
+
+# or u can specify the name of the brach yourself
+git branch -m "firstTry"
+
+## COMMITTING - a commit is equivalent to a checkpoint in the devlopment process
+# it is a snapshot of all changes in a repo
+# Work on stuff -> Add changes to as many files as required -> Group these changes into sets and add a label -> Commit each of it individually ->| now you have a check point
+
+# Committing is of two stages: git add (to club the changes) and git commit (send it to repo)
+# There are three locations:
+# 1) Working Directory
+# 2) Staging Area
+# 3) Repository
+# git add issued from the working dir, stages the changes
+# git commit issued after staging, commits the changes to the .git ie the repo
+# to add all the untracked changes, use . instead of file paths 
+git add file1.extn
+git add file2.extn file3.extn
+git add .
+# issue git status to see what changes are added and what are untracked
+
+# Two ways to commmit - issue the git commit with/without the message
+# Without -m, issuing git commit will open a text editor and ask for a message
+git commit
+git commit -m "added new files for XYZ and deleted ABC"
+
+# log command: to display the commits timeline -
+# Shows three things: 
+# 1) commid hash a369f9f682851937bf25cf2e0a159f9190d0af94
+# 2) Author, Date
+# 3) message for that commit
+git log
+
+# Documentation at https://git-scm.com
+
