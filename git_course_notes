@@ -98,3 +98,30 @@ touch .gitingnore
 # edit this file and add line by line names and folders you would like to ignore
 # Refer https://gitgnore.io  to know what all you would be needing to ignore and 
 #	just copy paste and save your time
+
+
+
+
+
+# Branches:
+# Each commit has a hash, also has a parent commit - where it came from
+# Imagine linked list of commit operations 
+# Branches in git allows us to work on different timelines of the project
+# Changes in one branch will not affect the other
+# Master/Main branch - are the project's main branch - this is the one that works for sure (Bmain)
+# HEAD is a pointer to a branch's LAST commit like 'main', 'sub branch' etc.
+# We can make HEAD point to the required branch so that we swithc between different timeline
+
+# TO view brances
+git branch
+
+# CREATE branch
+git branch main2
+
+# switch to a different branch
+git switch main2
+
+# After switching, use these statements to find verbose information on where HEAD is pointing to
+git status
+git log
+
