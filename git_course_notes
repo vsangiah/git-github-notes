@@ -60,9 +60,10 @@ git add .
 
 # Two ways to commmit - issue the git commit with/without the message
 # Without -m, issuing git commit will open a text editor and ask for a message
+# with -a -m "msg" it will add all unchecked files
 git commit
 git commit -m "added new files for XYZ and deleted ABC"
-
+git commit -a -m "added new files"  
 # log command: to display the commits timeline -
 # Shows three things: 
 # 1) commid hash a369f9f682851937bf25cf2e0a159f9190d0af94
@@ -124,4 +125,79 @@ git switch main2
 # After switching, use these statements to find verbose information on where HEAD is pointing to
 git status
 git log
+
+# ALternate to switch: checkout = switch and restore workign trees - OLD
+git checkout main2
+
+# Shorter way to create a branch and switch to it
+git swtich -c main3
+
+# Observations when there is an uncommitted file:
+# The uncommitted file will follow through all cranches when switcvhed
+# SO commit everything and keep the status clean before creating new branches 
+
+# To delete a branch:
+git branch -d main3
+# It will give error that it is not merged
+
+# TO force delete a branch
+git branch -D main3 
+
+# TO rename a branch
+git branch -m "main3TheBest"
+
+
+
+# MERGE: happens between two valid branches, to the HEAD pointing branch
+# Eg. master, feature1, feature2, feature3 are the branches, user wishes to make feature3 available to master
+git swtich master
+git merge feature3 -m "merge action to make feature 3 available in master"
+# HEAD will point to master and will have feature3
+
+# If two branches have conflicts, then we need to fix the merge issue by opening and seeing those merge markers with HEAD and the mergeing branch
+# First see what are conflicting
+git diff --check 
+# Then open up these files to see the conflict markers and decide
+# After resolving conflicts ie removing all markers and merging the text, issue the merge command
+
+
+# Whnen you have uncommitted changes, use the following to see a crazy output to see differences
+git diff
+
+# Ouput analysis:
+# a and b are compared. if renamed, it will be reflected 
+diff --git a/list.txt b/list.txt
+# metadata: not needed
+index c265689..4c1fa0f 100644
+# markers for a is -, marker for b is +
+--- a/list.txt
++++ b/list.txt
+# 8 lines extracted from line 1
+# 12 lines extracted from line 1
+@@ -1,8 +1,12 @@
+ taylor
+ billie
+ eminem
+-sia
++dia
+ sia2
+ sia3
+-billie2
+-taylor2
+\ No newline at end of file
++box
++cube
++illie2
++taylor2
++taylor3
++
+
+# Other uses for git diff
+git diff branch1 branch2
+git diff HEAD
+git diff --staged
+git diff --cached
+git diff commithash1 commithash2
+git diff branch1 file_name.extn
+git diff --staged file_name.extn
 
