@@ -533,7 +533,7 @@ git pull
 # NOW git pull and merge your changes and theirs (Similar to developer's p4 workflow) [but be wary of your current branch]
 # NOW you'll be able to push: git push origin main
 
-
+# GIT PULL shorthand command will pickup the corresponding remote branch while in an appropriate local branch
 
 
 
