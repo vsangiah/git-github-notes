@@ -259,6 +259,8 @@ git stash clear
 
 # Travel in time backward to a commit that was done earlier
 git checkout <commitID last seven characters>
+# this will detach the HEAD and usually HEAD points to a particular leading branch.
+# But when checkout happens, HEAD  now points to an earlier commit - now u can use this state to modify the code or content as you wish
+# but still after checkout, HEAD is in a bad state. it should point to a leading branch
 
-# this will detach the head and usually head points to a particular leading branch.
-# But when checkout happens, 
+
