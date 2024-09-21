@@ -106,7 +106,8 @@ touch .gitingnore
 # Refer https://gitgnore.io  to know what all you would be needing to ignore and 
 #	just copy paste and save your time
 
-
+.save
+.slxc
 
 
 
@@ -262,5 +263,40 @@ git checkout <commitID last seven characters>
 # this will detach the HEAD and usually HEAD points to a particular leading branch.
 # But when checkout happens, HEAD  now points to an earlier commit - now u can use this state to modify the code or content as you wish
 # but still after checkout, HEAD is in a bad state. it should point to a leading branch
+git swtich master
+# this will get the HEAD pointing to the master branch leading node 
 
 
+# Use the Detatched HEAD to create a new branch and work on that alternative timeline
+git switch -c new-alternate-timeline
+#make changes
+git commit -am "new timeline changes"
+
+git log
+# to see HEAD is in the new-alternate-timeline
+
+# Suppose you want to move your HEAD in a branch by number of commits
+git checkout HEAD~1
+git checkout HEAD~2
+git checkout HEAD~5
+git switch -
+# to go to the branch tip where you left off
+
+# How to do Undo changes
+# EG. mkae some unnecessary changes in file and you want to revert that file back to (like p4 revert)
+#make changes
+git checkout HEAD filename1.extn filename1=2.extn
+git checkout HEAD
+git checkout -- filename.extn filename1.extn 
+# this will get you back the reverted state back to where we committed earlier
+
+
+# Another way to Undo changes to HEAD: GIT RESTORE
+git restore filename1.extn filename2.extn
+# This cannot be redo able. You ll lose all changes made after HEAD
+
+# If you want to restore to some different past commit, say HEAD~2
+git restore --source HEAD~2 filename.extn
+# NOW, if you want to get back to branch tip HEAD
+git restore filename.extn filename2.extn
+ 
