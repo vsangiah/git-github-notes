@@ -1,7 +1,8 @@
 # Important stuff in this course: 
 # Core git, Next level, Collaborating, Advanced - maybe Unnecessary
 
-# Start:
+### GIT CORE START ###
+
 # GIT - version control system, does everything like perforce
 
 # How to Visualise this:
@@ -327,3 +328,59 @@ git revert <commit hashID 7 chars>
 # NOW you ll be prompted to add a message
 
 # GIT REVERT IS useful in collaboration
+
+### GIT CORE END ###
+
+##############
+# GITHUB
+# Hosting platform service for git repos to be put up in cloud - good for collaboration
+# Requires internet and an account
+# good to backup your work in your local machine
+# Others can have access to your work and they'll improve
+# GitLab, BitBucket are other services
+# Free version - Action minutes/permonth is limited
+# Social media for code development and  collaboration
+# Scanning vulnerablities
+
+# Why GitHub?
+# Collaboration
+# Opportunity to contribute to open source projects
+# Gives you exposure to mentors
+
+#GITHUB BASICS START
+
+# Cloning: (part of git)
+# git init - starts a new project
+# git clone <URL> - downloads the online repository (GitHub, GitLab etc) to your local machine 
+# you'll get all the commits and all the 
+
+# CHECK whether before starting, do not have any local git repo in a folder
+git clone https://github.com/gabrielecirulli/2048.git
+# nOW you have a git repo with all the history
+
+# PERMISSIONS:
+# if public repo, you can download without any permission
+# to push your changes, you need permissions
+
+
+# Register in github with same email address as $ git config --global user.email
+# Generate a SSH Key (secure shell protocol) to upload your work
+# from ~/ execute:
+ssh-keygen -t ed25519 -C "venkat2797@gmail.com"
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+cat ~/.ssh/id_ed25519.pub
+# copy the contents to your github settings > Access > SSH and GPC keys > Add SSH
+
+
+# GET STARTED WITH GITHUB
+# 1. create a github repo
+# 2. connect your local repo
+# 3. push up the changes to github
+
+# OR
+# 1. create a brand new repo in github
+# 2. clone it to local machine
+# 3. Work locally
+# 4. Push changed to github
+
