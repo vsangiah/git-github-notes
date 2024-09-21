@@ -436,5 +436,105 @@ git push origin feature2branch
 # OR
 # git push origin master:newfeature
 
+# -u option: UPSTREAM
+git push -u origin master
+
+# Do this once and upstrean master will be connected to local and will be remembered
+# Next time you need to just do 
+git push
+
+
+
+# 2nd way: clone a online github repo to local
+# create a new repo in github
+# check status of current folder in local machine, you should not be in a git repo
+git clone HTTPS_REPO_LINK
+
+# check git status and git remoter now:
+git status
+git remote
+# this gives a default remote named origin and is having the fetch, push link
+
+
+# UNDERSTAND remote tracking branch vs local branch:
+# Take a GitHub repo, clone it to your machine:
+# There are two branch references:
+# 1. main
+# 2. origin/main
+# They'll be referencing the tip at the beginning but they can diverge after sometime when local commits are made and no remote pushes are made
+# Use this command to see the remote tracking branch
+git branch -r
+# it will show you origin/main and other online branches.
+# git branch will only show you the local branch
+# Local repo knows about the online branches
+
+
+# After doing few local commits, issuing git status will inform you that you are NN commits ahead of origin/main; remote reference doesnt move. Even git log will show the two references for HEAD: local machine's reference and the remote reference
+
+
+# How to connect the specific online github branch to local
+# After git cloning, you are left with main ( that is pointing to -> origin/main)
+git branch -r
+# get to know the REMOTE_BRANCH_NAME
+git switch 
+REMOTE_BRANCH_NAME
+# It automatically creates a new local branch and will track the equivalent remote branch and you can work on the local repo
+
+# FETCHING ANF PULLING:
+# Imagine you are working on a sb for a long time and there will be jobs going ahead. Soon you'll be obliged to get the latest revision
+
+#GIT FETCH - get latest revision but it will be done in local repository (no need of merging our working directory)
+#GIT PULL - Get latest revision to workspace
+
+# SEQUENCE DIAGRAM:
+#
+#   WORKSPACE ---git add---> STAGING_AREA ---git commit---> LOCAL_REPOSITORY ---git push---> REMOTE_REPOSITORY
+# REMOTE_REPOSITORY ---git fetch---> LOCAL_REPOSITORY ---git pull---> WORKSPACE
+
+
+# cmd:
+git fetch REMOTE_NAME
+git fetch origin
+# Default REMOTE_NAME assumed to be origin
+git fetch
+
+# While youre working with a repo for a long time, the online version goeas ahead. What this fetch cmd will do is that it kind of creates a local branching of the latest origin/main's HEAD, so your current local directory will not be disturbed, instead you'll have access to origin/main's state.
+
+# Demo:
+# 1. make online github changes and get to a advanced commit state for main
+# 2. in your local working dir:
+git status
+# 3. local directory will say branch main is up to date with origin/main
+# 4. Lying. Use git fetch to help yourselves get to know if origin/main has advanced or not
+git fetch origin
+git fetch origin REMOTE_BRANCH_NAME
+# 4. NOW check git status, you'll see, how many commits you are behind
+git status
+# 5. TO get a sneak peak:
+git checkout origin/REMOTE_BRANCH_NAME
+# 6. Get to working state get back to the local branch you were working on
+git switch LOCAL_BRANCH_NAME
+
+
+# PULLING:
+# First swtich to the branch you want to pull changes down to.
+git pull REMOTE REMOTE_BRANCH_NAME
+git pull
+# this will fetch and merge the latest changes from the online github repo to your local machine's working directory
+
+# mostly this will result in merge conflicts. you need to resolve them
+
+# So the practice is that:
+# Clone GitHub Repo
+# Work on it locally for few days: some NN commits will be already in online
+# Try git fetch - get to know the changes in a local repository. Make your local machine aware of online changes
+# Now most probably those changes are not related to your feature work.
+# So keep working and when you decide push. Try again git fetch, you ll find more new changes in online github.
+# NOW git pull and merge your changes and theirs (Similar to developer's p4 workflow) [but be wary of your current branch]
+# NOW you'll be able to push: git push origin main
+
+
+
+
 
 
