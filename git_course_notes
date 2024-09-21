@@ -1,26 +1,26 @@
-Important stuff in this course: 
-Core git, Next level, Collaborating, Advanced - maybe Unnecessary
+# Important stuff in this course: 
+# Core git, Next level, Collaborating, Advanced - maybe Unnecessary
 
-Start:
-GIT - version control system, does everything like perforce
+# Start:
+# GIT - version control system, does everything like perforce
 
-How to Visualise this:
-1) add checkpoints for any set of files (repos)
-2) go back in time to that checkpoint
-3) fork and have a different time line and thay could meet with the first timeline
+# How to Visualise this:
+# 1) add checkpoints for any set of files (repos)
+# 2) go back in time to that checkpoint
+# 3) fork and have a different time line and thay could meet with the first timeline
 
-Scientists use git + Github for code and theses
+# Scientists use git + Github for code and theses
 
-git - offline, local to the machine vs Github - web service for hosts repos
+# git - offline, local to the machine vs Github - web service for hosts repos
 
-Configuring Git:
+# Configuring Git:
 git config user.name
 git config user.email
 git config --global user.name "Venkatesh"
 git config --global user.email venkat2797@gmail.com
 
-GIT REPO: workspace with files and folders and history
-Have a master folder - cd into the folder and init git there - now this is a repo
+# GIT REPO: workspace with files and folders and history
+# Have a master folder - cd into the folder and init git there - now this is a repo
 # to get history of the repo 
 git log
 
@@ -57,6 +57,12 @@ git add file1.extn
 git add file2.extn file3.extn
 git add .
 # issue git status to see what changes are added and what are untracked
+
+# Made changes but decided to revert changes to where it started 
+git restore filename.extn
+git restore .
+git restore --staged
+
 
 # Two ways to commmit - issue the git commit with/without the message
 # Without -m, issuing git commit will open a text editor and ask for a message
@@ -163,6 +169,7 @@ git diff --check
 
 # Whnen you have uncommitted changes, use the following to see a crazy output to see differences
 git diff
+# this will show diff for any (un)staged files in the working dir
 
 # Ouput analysis:
 # a and b are compared. if renamed, it will be reflected 
@@ -192,12 +199,66 @@ index c265689..4c1fa0f 100644
 +taylor3
 +
 
-# Other uses for git diff
+# Other usage for git diff
 git diff branch1 branch2
+git diff branch1..branch2
+
+# list changes in wd since last commit (staged ones will not be shown)
 git diff HEAD
+
+# list the changes that were added to staging area (two ways --styaged, --cached)
 git diff --staged
 git diff --cached
+
+# Use git log --oneline to get shortened hashes and use them
 git diff commithash1 commithash2
+git diff commithash1..commithash2
 git diff branch1 file_name.extn
 git diff --staged file_name.extn
 
+# Stashing - similar but not same as shelving in perforce
+# make some changes in one branch, halfway through, and you want to work on another branch
+# this is where you can stash the changes in the first branch and move to another branch and work parallelly
+git stash
+git stash save
+git stash push -m "message identifier"
+# all three ways are good
+
+# to list any stashes in that branch
+git stash list
+
+# now you can check status, youll see nothing to commit
+git status
+
+# so you can change to the new branch
+git switch someotherbranch
+#make changes and get back to master
+git switch master
+
+git stash list
+# there is only one stash, so you can use stash pop command
+# TO Get the stashed work onto the workspace and remove the stash from existence
+git stash pop
+
+#stash apply to one or more specific branches, but stash will be still there
+git stash apply
+git stash apply stash@{NN}
+
+#to drop stashes: remove all the stashed informaiton.
+git stash drop
+git stash drop stash@{NN}
+
+#TIP: Suppose you made changes and feel like throwing them away
+git stash
+git stash drop
+# NOw this is equivalent to reverting changes in perforce to earlier starting state
+
+# If you dont want any stashes
+git stash clear
+
+
+# Travel in time backward to a commit that was done earlier
+git checkout <commitID last seven characters>
+
+# this will detach the head and usually head points to a particular leading branch.
+# But when checkout happens, 
