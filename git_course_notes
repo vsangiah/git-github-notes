@@ -17,8 +17,9 @@
 # Configuring Git:
 git config user.name
 git config user.email
-git config --global user.name "Venkatesh"
+git config --global user.name "vsangiah"
 git config --global user.email venkat2797@gmail.com
+git config -l
 
 # GIT REPO: workspace with files and folders and history
 # Have a master folder - cd into the folder and init git there - now this is a repo
@@ -41,6 +42,9 @@ git config --global init.defaultBranch "main"
 
 # or u can specify the name of the brach yourself
 git branch -m "firstTry"
+
+# if you wish to rename your branch to main or master
+git branch -m "newBranchName"
 
 ## COMMITTING - a commit is equivalent to a checkpoint in the devlopment process
 # it is a snapshot of all changes in a repo
@@ -375,7 +379,7 @@ cat ~/.ssh/id_ed25519.pub
 
 # GET STARTED WITH GITHUB
 # 1. create a github repo
-# 2. connect your local repo
+# 2. setup a remote connect your local repo
 # 3. push up the changes to github
 
 # OR
@@ -383,4 +387,54 @@ cat ~/.ssh/id_ed25519.pub
 # 2. clone it to local machine
 # 3. Work locally
 # 4. Push changed to github
+
+
+# 1st way. you have a loacl repo, and an empty github repo, now do this:
+git remote add <name> <url>
+# to check if any remote available in your local repo and give a verbose output, 
+git remote -v
+git remote --verbose
+
+# Example
+# First Get a token(classic) from the github website
+# USer ProfilePic > Settings > Developer Settings > Personal Access Tokens > Tokens (classic) > Create Tokens (classic) > fill the form to get the token
+git remote add gitnotes111 https://YOUR_PERSONAL_ACCESS_TOKEN@github.com/vsangiah/git-github-notesREPO_NAME.git
+
+
+# OR use a SSH key
+git remote add origin git@github.com:vsangiah/git-github-notes.git
+
+# to rename a remote,
+git remote rename gitnotes111 origin
+
+
+# to removea a remote
+git remote remove origin
+
+
+# NOW push your local changes to the web
+git push origin main
+# thats it
+
+# you can also push another branch while not in that branch
+git push origin feature2branch
+
+# github gives all verbose stats:
+# last time when pushed
+# the current branch is NN commits ahead
+# recent commits that affected each file
+# link to visually see all commits
+# Discuss the commits by adding comments and revisit them later
+
+
+# Closer look:
+# git push origin master
+# creates a new master branch in empty git repo
+# next time you execute this push, any commits in local master branch gets pushed to remote (origin)
+# you can push local master to something else in remote
+# git push origin featurebranch:master
+# OR
+# git push origin master:newfeature
+
+
 
