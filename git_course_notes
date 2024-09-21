@@ -525,13 +525,13 @@ git pull
 # mostly this will result in merge conflicts. you need to resolve them
 
 # So the practice is that:
-# Clone GitHub Repo
-# Work on it locally for few days: some NN commits will be already in online
-# Try git fetch - get to know the changes in a local repository. Make your local machine aware of online changes
-# Now most probably those changes are not related to your feature work.
-# So keep working and when you decide push. Try again git fetch, you ll find more new changes in online github.
-# NOW git pull and merge your changes and theirs (Similar to developer's p4 workflow) [but be wary of your current branch]
-# NOW you'll be able to push: git push origin main
+# 1) Clone GitHub Repo
+# 2) Work on it locally for few days: some NN commits will be already in online
+# 3) Try git fetch - get to know the changes in a local repository. Make your local machine aware of online changes
+# 4) Now most probably those changes are not related to your feature work.
+# 5) So keep working and when you decide push. Try again git fetch, you ll find more new changes in online github.
+# 6) NOW git pull and merge your changes and theirs (Similar to developer's p4 workflow) [but be wary of your current branch]
+# 7) NOW you'll be able to push: git push origin main
 
 # GIT PULL shorthand command will pickup the corresponding remote branch while in an appropriate local branch
 
