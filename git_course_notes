@@ -300,3 +300,30 @@ git restore --source HEAD~2 filename.extn
 # NOW, if you want to get back to branch tip HEAD
 git restore filename.extn filename2.extn
  
+# Unstage files using RESTORE
+# suppose, you have added/staged some things in filename.extn accidentally and you need to unstage
+git restore --staged filename.extn
+
+
+#TIP:
+# GIT STATUS cmd gives you all commands to work with. you dont need to remember anything specific to revert.
+
+
+# GIT RESET: It is like git checkout and deleting commits
+# USE IT WITH CAUTION - you'll lose commits and you'll not lose progress in your work. the changes you made will still be there
+git reset <commit hash ID 7 chars>
+
+# USE THIS WITH CAUTION: Hard reset: lose commmits and progress. and revert back in time. non reversible
+git reset --hard <commith hash ID 7 chars>
+
+
+# GIT REVERT: reset with message, gives a new commit and moves ahead in time
+git revert <commit hashID 7 chars>
+
+# The commit does not go away, but you end up in a higher leading branch tip. git log will give you details that earlier commits are not thrown away but still there.
+# this is a safer way to not avoid losing information. and keep record of bad commits
+# IF THERE ARE MERGE CONFLICTS:
+# resolve them, use git add, git remove <filename.extn> and git revert --continue 
+# NOW you ll be prompted to add a message
+
+# GIT REVERT IS useful in collaboration
